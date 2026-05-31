@@ -191,24 +191,26 @@ def callback(call):
         # -----------------------------
         # ОТПРАВЛЯЕМ 2 ВИДЕО
         # -----------------------------
-        VIDEO1 = "BAACAgIAAxkBAAOkahuD0HIy3xxKNpkg7IrnkdiNMyYAAiKgAAIX0dlIC_asCJf32447BA"
-        VIDEO2 = "BAACAgIAAxkBAAOmahuD_G5n1ciw4CC-etp_IWhE1ioAAiOgAAIX0dlIZ0OF6AqI9KE7BA"
 
-        bot.send_video(
-            call.message.chat.id,
-            VIDEO1
-        )
+        try:
+            VIDEO1 = "BAACAgIAAxkBAAOkahuD0HIy3xxKNpkg7IrnkdiNMyYAAiKgAAIX0dlIC_asCJf32447BA"
+            VIDEO2 = "BAACAgIAAxkBAAOmahuD_G5n1ciw4CC-etp_IWhE1ioAAiOgAAIX0dlIZ0OF6AqI9KE7BA"
 
-        bot.send_video(
-            call.message.chat.id,
-            VIDEO2
-        )
-        # -----------------------------
-        # ТЕКСТ + КНОПКИ
-        # -----------------------------
-        with open("люблю.txt", "r", encoding="utf-8") as file:
-            text = file.read()
+            bot.send_video(call.message.chat.id, VIDEO1)
+            bot.send_video(call.message.chat.id, VIDEO2)
 
+            with open("люблю.txt", "r", encoding="utf-8") as file:
+                text = file.read()
+
+            bot.send_message(
+                call.message.chat.id,
+                text,
+                reply_markup=keyboard
+            )
+
+        except Exception as e:
+            print("BTN4 ERROR:")
+            print(repr(e))
         # -------------------
         # ОТПРАВЛЯЕМ ТЕКСТ + КНОПКИ
         # -------------------
