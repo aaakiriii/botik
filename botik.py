@@ -191,23 +191,15 @@ def callback(call):
         # -----------------------------
         # ОТПРАВЛЯЕМ 2 ВИДЕО
         # -----------------------------
-        media = []
+        try:
+            with open("КЛОАКА.mp4", "rb") as video:
+                bot.send_video(call.message.chat.id, video)
 
-        video1 = open("КЛОАКА.mp4", "rb")
-        video2 = open("пятки.mp4", "rb")
+            with open("пятки.mp4", "rb") as video:
+                bot.send_video(call.message.chat.id, video)
 
-        media.append(
-            InputMediaVideo(video1)
-        )
-
-        media.append(
-            InputMediaVideo(video2)
-        )
-
-        bot.send_media_group(
-            call.message.chat.id,
-            media
-        )
+        except Exception as e:
+            print("ОШИБКА:", e)
 
         # -----------------------------
         # ТЕКСТ + КНОПКИ
