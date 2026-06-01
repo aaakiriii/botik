@@ -211,14 +211,7 @@ def callback(call):
         except Exception as e:
             print("BTN4 ERROR:")
             print(repr(e))
-        # -------------------
-        # ОТПРАВЛЯЕМ ТЕКСТ + КНОПКИ
-        # -------------------
-        bot.send_message(
-            call.message.chat.id,
-            text,
-            reply_markup=keyboard
-        )
+        
     # -------------------
     # НАЗАД В МЕНЮ
     # -------------------
